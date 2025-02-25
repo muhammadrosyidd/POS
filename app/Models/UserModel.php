@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class m_user extends Model
+class UserModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'm_users';
+    protected $primaryKey = 'user_id';
 }
