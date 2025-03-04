@@ -11,4 +11,7 @@ class UserModel extends Model
 
     protected $table = 'm_users';
     protected $primaryKey = 'user_id';
+
+    protected $fillable = ['level_id','username','nama'];
+
 }
