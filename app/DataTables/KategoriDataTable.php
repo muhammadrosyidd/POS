@@ -22,7 +22,26 @@ class KategoriDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-/*             ->addColumn('action', 'kategori.action') */
+        ->addColumn('action', function ($row) {
+            return '<div class="d-flex gap-2">
+                        <a href="' . route('kategori.edit', $row->kategori_id) . '" 
+                            class="btn btn-sm btn-warning d-flex align-items-center justify-content-center"
+                            style="width: 80px; height: 35px;">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <form action="' . route('kategori.destroy', $row->kategori_id) . '" method="POST" 
+                              onsubmit="return confirm(\'Apakah Anda yakin ingin menghapus kategori ini?\');">
+                            ' . csrf_field() . '
+                            ' . method_field('DELETE') . '
+                            <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center justify-content-center"
+                            style="width: 80px; height: 35px;">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </form>
+                    </div>'
+                    ;
+        })
+        ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -72,6 +91,12 @@ class KategoriDataTable extends DataTable
             Column::make('kategori_nama'),
             Column::make('created_at'),
             Column::make('updated_at'),
+            Column::computed('action')
+            ->title('Aksi')
+            ->exportable(false)
+            ->printable(false)
+            ->width(100)
+            ->addClass('text-center'),
         ];
     }
 

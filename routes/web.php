@@ -42,6 +42,11 @@ Route::get('/user/hapus/{id}', [UserController::class,'hapus']);
 Route::post('/user/tambah_simpan', [UserController::class,'tambah_simpan']);
 Route::put('/user/ubah_simpan/{id}', [UserController::class,'ubah_simpan']);
 Route::get('/kategori/create',[KategoriController::class, 'create']);
+Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
 Route::post('/kategori',[KategoriController::class, 'store']);
+Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.index');
+Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::post('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
 
