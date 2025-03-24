@@ -25,7 +25,7 @@ class KategoriController extends Controller
                 'kategori_kode' => $request->kodeKategori,
                 'kategori_nama' => $request->namaKategori,
             ]);
-            return redirect('/kategori');
+            return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan');
         }
 
         public function edit($id){
