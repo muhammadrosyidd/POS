@@ -5,8 +5,8 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('kategori/create') }}">Tambah</a>
-                <button onclick="modalAction('{{ url('kategori/create_ajax') }}')" class="btn btn-sm btn-success mt-1">
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('barang/create') }}">Tambah</a>
+                <button onclick="modalAction('{{ url('barang/create_ajax') }}')" class="btn btn-sm btn-success mt-1">
                     Tambah Ajax
                 </button>
             </div>
@@ -35,12 +35,15 @@
             </div>
         </div>
         <table class="table table-bordered table-striped table-hover table-sm"
-        id="table_kategori">
+        id="table_barang">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Kategori Kode</th>
-                    <th>Kategori Nama</th>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Kategori</th>
+                    <th>Harga Beli</th>
+                    <th>Harga Jual</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -63,11 +66,11 @@
             });
         }
         $(document).ready(function() {
-            var dataKategori = $('#table_kategori').DataTable({
+            var dataBarang = $('#table_barang').DataTable({
                 // serverSide: true, jika ingin menggunakan server side processing
                 serverSide: true,
                 ajax: {
-                    "url": "{{ url('kategori/list') }}",
+                    "url": "{{ url('barang/list') }}",
                     "dataType": "json",
                     "type": "POST",
                     "data": function(d) {
@@ -82,15 +85,31 @@
                         orderable: false,
                         searchable: false
                     },{
-                        data: "kategori_kode",
+                        data: "barang_kode",
                         className: "",
                         orderable: true,
                         searchable: true
                     },{
-                        data: "kategori_nama",
+                        data: "barang_nama",
                         className: "",
                         orderable: true,
                         searchable: true
+                    },{
+                        // mengambil data level hasil dari ORM berelasi
+                        data: "kategori.kategori_nama",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    },{
+                        data: "harga_beli",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    },{
+                        data: "harga_jual",
+                        className: "",
+                        orderable: false,
+                        searchable: false
                     },{
                         data: "aksi",
                         className: "",
@@ -101,7 +120,7 @@
             });
 
             $('#kategori_id').on('change', function() {
-                dataKategori.ajax.reload();
+                dataBarang.ajax.reload();
             });
         });
     </script>
