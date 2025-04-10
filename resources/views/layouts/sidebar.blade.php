@@ -58,8 +58,6 @@
                     <p>Data Barang</p>
                 </a>
             </li>
-            
-            <li class="nav-header">Data Transaksi</li>
             <li class="nav-item">
                 <a href="{{ url('/stok') }}" class="nav-link {{ ($activeMenu == 'stok') ?
     'active' : '' }} ">
@@ -67,11 +65,22 @@
                     <p>Stok Barang</p>
                 </a>
             </li>
+            <li class="nav-header">Data Transaksi</li>
             <li class="nav-item">
                 <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu ==
     'penjualan') ? 'active' : '' }} ">
                     <i class="nav-icon fas fa-cash-register"></i>
                     <p>Transaksi Penjualan</p>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="#" class="nav-link" id="logout" style="color: red">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    <p>Logout</p>
                 </a>
             </li>
         </ul>
