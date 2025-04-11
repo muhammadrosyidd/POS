@@ -30,6 +30,9 @@ Route::post('login', [AuthController::class, 'postLogin']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth');
 
+Route:: get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route:: post('register', [AuthController::class, 'postregister'])->name('postregister')->middleware('guest');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 

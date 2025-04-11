@@ -59,7 +59,9 @@
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
-                        <!-- /.col -->
+                        <div class="col-8 mt-3">
+                            <a style="opacity: 0.75" href="{{ url('/register') }}">Don't have an account?Sign Up</a>
+                        </div>
                     </div>
                 </form>
             </div>
