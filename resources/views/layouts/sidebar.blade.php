@@ -67,7 +67,7 @@
             </li>
             <li class="nav-header">Data Transaksi</li>
             <li class="nav-item">
-                <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu ==
+                <a href="{{ url('/transaksi') }}" class="nav-link {{ ($activeMenu ==
     'penjualan') ? 'active' : '' }} ">
                     <i class="nav-icon fas fa-cash-register"></i>
                     <p>Transaksi Penjualan</p>
@@ -86,3 +86,10 @@
         </ul>
     </nav>
 </div>
+
+<script>
+    document.getElementById('logout').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('logout-form').submit();
+    });
+</script>
