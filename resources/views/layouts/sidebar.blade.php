@@ -73,6 +73,13 @@
                     <p>Transaksi Penjualan</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ url('/profile') }}" class="nav-link {{ ($activeMenu ==
+                'profile')? 'active' : '' }} ">
+                    <i class="nav-icon far fa-list-alt"></i>
+                    <p>Profile</p>
+                </a>
+            </li>
             
             <li class="nav-item">
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
